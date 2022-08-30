@@ -74,10 +74,6 @@ class SketchCanvas extends React.Component {
     permissionDialogMessage: '',
   };
 
-  state = {
-    text: null
-  }
-
   constructor(props) {
     super(props)
     this._pathsToProcess = []
@@ -88,19 +84,6 @@ class SketchCanvas extends React.Component {
     this._offset = { x: 0, y: 0 }
     this._size = { width: 0, height: 0 }
     this._initialized = false
-
-    this.state.text = this._processText(props.text ? props.text.map(t => Object.assign({}, t)) : null)
-  }
-
-  componentWillReceiveProps(nextProps) {
-    this.setState({
-      text: this._processText(nextProps.text ? nextProps.text.map(t => Object.assign({}, t)) : null)
-    })
-  }
-
-  _processText(text) {
-    text && text.forEach(t => t.fontColor = processColor(t.fontColor))
-    return text
   }
 
   clear() {
@@ -249,7 +232,6 @@ class SketchCanvas extends React.Component {
         localSourceImage={this.props.localSourceImage}
         permissionDialogTitle={this.props.permissionDialogTitle}
         permissionDialogMessage={this.props.permissionDialogMessage}
-        text={this.state.text}
       />
     );
   }
