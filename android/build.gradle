@@ -26,7 +26,3 @@ android {
         }
     }
 }
-
-dependencies {
-    provided "com.facebook.react:react-native:+"
-}
